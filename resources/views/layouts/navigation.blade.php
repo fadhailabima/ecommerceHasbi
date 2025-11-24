@@ -7,9 +7,9 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center space-x-2">
                         <div class="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg p-2">
-                            <span class="text-2xl">🛒</span>
+                            <span class="text-2xl">🏬</span>
                         </div>
-                        <span class="font-bold text-xl text-gray-800 hidden md:block">Djoki Shop</span>
+                        <span class="font-bold text-xl text-gray-800 hidden md:block">MegaStore</span>
                     </a>
                 </div>
 

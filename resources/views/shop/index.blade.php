@@ -27,13 +27,18 @@
                     @foreach($products as $product)
                     <div class="bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden group">
                         <!-- Product Image -->
-                        <div class="h-56 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden">
+                        <div class="h-56 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden relative">
                             @if($product->image)
-                                <img src="{{ Storage::url($product->image) }}" 
+                                <img src="/storage/{{ $product->image }}" 
                                      alt="{{ $product->name }}" 
-                                     class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                     class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                     loading="lazy"
+                                     onerror="console.error('Image failed:', this.src); this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex flex-col items-center justify-center h-full\'><span class=\'text-gray-400 text-6xl mb-2\'>📦</span><p class=\'text-xs text-red-500\'>Image not available</p></div>';">
                             @else
-                                <span class="text-gray-400 text-6xl">📦</span>
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-gray-400 text-6xl">📦</span>
+                                    <p class="text-xs text-gray-500 mt-2">No image</p>
+                                </div>
                             @endif
                         </div>
                         

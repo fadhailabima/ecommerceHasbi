@@ -18,17 +18,17 @@
             <div class="bg-white rounded-xl shadow-lg overflow-hidden">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
                     <!-- Product Image -->
-                    <div class="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden flex items-center justify-center" style="min-height: 400px;">
-                        @if($product->image)
-                            <img src="{{ Storage::url($product->image) }}" 
-                                 alt="{{ $product->name }}" 
-                                 class="w-full h-full object-cover">
-                        @else
-                            <span class="text-gray-400 text-9xl">📦</span>
-                        @endif
-                    </div>
-
-                    <!-- Product Details -->
+                        <div class="h-96 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center overflow-hidden">
+                            @if($product->image)
+                                <img src="{{ asset('storage/' . $product->image) }}" 
+                                     alt="{{ $product->name }}" 
+                                     class="h-full w-full object-contain"
+                                     loading="lazy"
+                                     onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-gray-400 text-9xl\'>📦</span><p class=\'text-sm text-red-500 mt-4\'>Image not found</p>';">
+                            @else
+                                <span class="text-gray-400 text-9xl">📦</span>
+                            @endif
+                        </div>                    <!-- Product Details -->
                     <div class="flex flex-col justify-between">
                         <div>
                             <!-- Product Name -->

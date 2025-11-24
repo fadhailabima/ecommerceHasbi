@@ -87,16 +87,18 @@
                         </div>
 
                         <!-- Current Image -->
-                        @if($product->image)
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Current Image</label>
-                            <div class="w-32 h-32 bg-gray-100 rounded-lg overflow-hidden">
-                                <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                        @endif
-
-                        <!-- Product Image -->
+                            @if($product->image)
+                                <div class="mt-4">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Current Image:</label>
+                                    <div class="relative w-48 h-48 border-2 border-gray-200 rounded-lg overflow-hidden">
+                                        <img src="{{ asset('storage/' . $product->image) }}" 
+                                             alt="{{ $product->name }}" 
+                                             class="w-full h-full object-cover"
+                                             onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full bg-gray-100\'><span class=\'text-gray-400 text-4xl\'>📦</span></div>';">
+                                    </div>
+                                    <p class="mt-2 text-sm text-gray-500">Upload a new image to replace the current one</p>
+                                </div>
+                            @endif                        <!-- Product Image -->
                         <div>
                             <label for="image" class="block text-sm font-semibold text-gray-700 mb-2">Product Image</label>
                             <input type="file" 
