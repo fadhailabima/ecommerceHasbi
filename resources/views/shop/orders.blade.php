@@ -55,8 +55,21 @@
                                 @foreach($order->orderItems as $item)
                                 <div class="flex items-center justify-between border-b border-gray-100 pb-4 last:border-b-0">
                                     <div class="flex items-center space-x-4">
-                                        <div class="flex-shrink-0 h-16 w-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
-                                            <span class="text-2xl">📦</span>
+                                        <div class="flex-shrink-0 h-16 w-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden">
+                                            @if($item->product->image)
+                                                @php
+                                                    $imageUrl = url('storage/' . $item->product->image);
+                                                @endphp
+                                                <img src="{{ $imageUrl }}" 
+                                                     alt="{{ $item->product->name }}" 
+                                                     class="h-full w-full object-cover"
+                                                     onload="console.log('Order item image loaded:', this.src)"
+                                                     onerror="console.error('Order item image failed:', this.src); this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full w-full\'><span class=\'text-2xl\'>📦</span></div>';">
+                                            @else
+                                                <div class="flex items-center justify-center h-full w-full">
+                                                    <span class="text-2xl">📦</span>
+                                                </div>
+                                            @endif
                                         </div>
                                         <div>
                                             <h5 class="font-semibold text-gray-900">{{ $item->product->name }}</h5>

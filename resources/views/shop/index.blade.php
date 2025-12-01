@@ -29,11 +29,14 @@
                         <!-- Product Image -->
                         <div class="h-56 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden relative">
                             @if($product->image)
-                                <img src="/storage/{{ $product->image }}" 
+                                @php
+                                    $imageUrl = url('storage/' . $product->image);
+                                @endphp
+                                <img src="{{ $imageUrl }}" 
                                      alt="{{ $product->name }}" 
                                      class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300"
-                                     loading="lazy"
-                                     onerror="console.error('Image failed:', this.src); this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex flex-col items-center justify-center h-full\'><span class=\'text-gray-400 text-6xl mb-2\'>📦</span><p class=\'text-xs text-red-500\'>Image not available</p></div>';">
+                                     onload="console.log('Image loaded:', this.src)"
+                                     onerror="console.error('Image failed to load:', this.src, 'Path:', '{{ $product->image }}');">
                             @else
                                 <div class="flex flex-col items-center justify-center h-full">
                                     <span class="text-gray-400 text-6xl">📦</span>

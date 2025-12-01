@@ -1,0 +1,49 @@
+# ⚠️ JANGAN UPLOAD FILE-FILE INI KE PRODUCTION
+
+# Development files
+node_modules/
+.git/
+.github/
+tests/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local environment
+.env.local
+.env.backup
+
+# Build script
+build-production.sh
+
+# Documentation (optional, bisa di-upload jika perlu)
+README.md
+DEVELOPMENT_GUIDE.md
+
+# Logs (akan di-generate otomatis di server)
+storage/logs/*.log
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+
+# NPM (assets sudah di-build ke public/build)
+package-lock.json
+
+# Composer dev dependencies (pakai --no-dev saat install)
+# vendor/ akan di-generate di server
+
+# Local database
+*.sqlite
+*.sqlite-journal
+
+# Testing
+phpunit.xml
+.phpunit.result.cache

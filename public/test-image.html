@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Test</title>
+</head>
+<body>
+    <h1>Test Image Display</h1>
+    
+    <h2>Direct path to symlink:</h2>
+    <img src="/storage/products/cvEkEVm9YLxTjUVlqJiyO1BrYieHdtxfN8OQPxLh.png" alt="Test 1" style="max-width: 300px; border: 2px solid red;">
+    
+    <h2>Second image:</h2>
+    <img src="/storage/products/WkYWD8eW1vAtNSR1hanGXE7soKTo9ylm46HDADPl.jpg" alt="Test 2" style="max-width: 300px; border: 2px solid blue;">
+    
+    <h2>Third image:</h2>
+    <img src="/storage/products/1Rk9taCDL8DxjtvLTNRw1g1lNqXaNUoOBLxXHTVo.jpg" alt="Test 3" style="max-width: 300px; border: 2px solid green;">
+    
+    <script>
+        document.querySelectorAll('img').forEach((img, index) => {
+            img.onload = () => console.log(`Image ${index + 1} loaded successfully:`, img.src);
+            img.onerror = () => console.error(`Image ${index + 1} FAILED to load:`, img.src);
+        });
+    </script>
+</body>
+</html>
